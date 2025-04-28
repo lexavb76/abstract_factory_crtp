@@ -6,7 +6,6 @@
 class IProduct2 : public IBaseProduct
 {
 public:
-    IProduct2();
 };
 
 #endif // IPRODUCT2_H

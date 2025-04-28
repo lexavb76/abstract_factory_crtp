@@ -17,5 +17,6 @@ int main()
     c2.print_prod_1();
     c2.produce_prod_2();
     c2.print_prod_2();
+    c1 += c1;
     return 0;
 }

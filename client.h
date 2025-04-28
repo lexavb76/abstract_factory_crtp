@@ -2,8 +2,9 @@
 #define CLIENT_H
 
 #include "ibaseproduct.h"
-#include <vector>
+#include <iostream>
 #include <memory>
+#include <vector>
 
 template<typename Factory>
 class Client
@@ -14,6 +15,13 @@ class Client
     std::vector<IProd> vp2;
 
 public:
+#if 1
+    friend Client &operator+=(Client &one, Client &) //Restricted template expansion (Barton-Nackman Trick with in-class defined friend)
+    {
+        std::cout << "Client::operator+=" << std::endl;
+        return one;
+    }
+#endif
     void produce_prod_1()
     {
         vp1.push_back(static_cast<IProd>(factory.create_product_1()));
@@ -39,5 +47,14 @@ public:
     }
 
 };
+
+#if 1
+template<typename T>
+Client<T> &operator+=(Client<T> &one, Client<T> &)
+{
+    std::cout << "::operator+=" << std::endl;
+    return one;
+}
+#endif
 
 #endif // CLIENT_H

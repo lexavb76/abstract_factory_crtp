@@ -6,7 +6,6 @@
 class Product12 final : public IProduct2
 {
 public:
-    Product12();
     void who_is() override;
 };
 
